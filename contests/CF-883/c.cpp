@@ -4,6 +4,7 @@ using namespace std;
 #define FOR(i, st, n) for (int i = st; i < n; i++)
 #define vi vector<int>
 #define pii pair<int, int>
+#define vpll vector<pair<ll, ll>>
 #define vpii vector<pii>
 #define fastio ios::sync_with_stdio(false);cin.tie(0); 
 #define mp make_pair
@@ -35,8 +36,8 @@ void printStruct(C &n) {
        cout << i << " ";
    } cout << endl;
 }
-bool sortbyCond(const pair<int, int>& a,
-                const pair<int, int>& b) {
+bool sortbyCond(const pair<ll, ll>& a,
+                const pair<ll, ll>& b) {
     if (a.first != b.first)
         return (a.first > b.first);
     else
@@ -60,12 +61,12 @@ void solve() {
         }
     }
 
-    vpii ans;
-    pii rudolph;
+    vpll ans;
+    pair<ll, ll> rudolph;
     FOR(i, 0, n) {
         contSort(times[i]);
-        int cnt = 0, penalty = 0;
-        int j = 0, time = 0;
+        ll cnt = 0, penalty = 0;
+        ll j = 0, time = 0;
         while (j < m && time + times[i][j] <= k) {
             cnt++;
             time += times[i][j];
