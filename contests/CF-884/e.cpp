@@ -51,31 +51,28 @@ struct greater
 };
 
 void solve() {
-    int n;
-    ll largest = LLONG_MIN;
-    cin >> n;
-    vector<ll> v(n, 0);
+    int n,m,k;
+    cin >> n >> m >> k;
+
+    vector<vi> grid(n, vi(m, 0));
+
+    FOR(i, 0, k) {
+        int x1, y1, x2, y2;
+        cin >> x1 >> y1 >> x2 >> y2;
+        if(grid[x2 - 1][y2 - 1] != 0) {
+            grid[x1 - 1][y1 - 1] = i;
+        } else {
+            grid[x2 - 1][y2 - 1] = i;
+        }
+        // grid[x2 - 1][y2 - 1] = i;
+    }
+
     FOR(i, 0, n) {
-        cin >> v[i];
-        largest = max(largest, v[i]);
-    }
-    if (largest <= 0) {
-        cout << largest << endl;
-        return;
+        FOR(j, 0, m) {
+            cout << grid[i][j] << " ";
+        } cout << endl;
     }
 
-    ll ans = largest, sum = 0;
-    FORS(i, 0, n, 2)
-        if (v[i] >= 0)
-            sum += v[i];
-    
-    ans = max(ans, sum), sum = 0;
-    FORS(i, 1, n, 2)
-        if (v[i] >= 0)
-            sum += v[i];
-
-    
-    cout << max(ans, sum) << '\n';
     return;
 }
 

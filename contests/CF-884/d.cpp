@@ -2,7 +2,6 @@
 using namespace std;
  
 #define FOR(i, st, n) for (int i = st; i < n; i++)
-#define FORS(i, st, n, step) for (int i = st; i < n; i+= step)
 #define vi vector<int>
 #define pii pair<int, int>
 #define vpii vector<pii>
@@ -52,30 +51,22 @@ struct greater
 
 void solve() {
     int n;
-    ll largest = LLONG_MIN;
     cin >> n;
-    vector<ll> v(n, 0);
-    FOR(i, 0, n) {
-        cin >> v[i];
-        largest = max(largest, v[i]);
-    }
-    if (largest <= 0) {
-        cout << largest << endl;
-        return;
-    }
 
-    ll ans = largest, sum = 0;
-    FORS(i, 0, n, 2)
-        if (v[i] >= 0)
-            sum += v[i];
-    
-    ans = max(ans, sum), sum = 0;
-    FORS(i, 1, n, 2)
-        if (v[i] >= 0)
-            sum += v[i];
+    FOR(i, 2, 26) {
+        if (n % i) {
+            FOR(j, 0, n/i) {
+                FOR(k, 0, i) {
+                    cout << char(k + 'a');
+                }
+            }
 
-    
-    cout << max(ans, sum) << '\n';
+            FOR(j, 0, n % i) {
+                cout << char(j + 'a');
+            }cout << '\n';
+            return;
+        }
+    }
     return;
 }
 

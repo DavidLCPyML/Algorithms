@@ -51,31 +51,41 @@ struct greater
 };
 
 void solve() {
-    int n;
-    ll largest = LLONG_MIN;
-    cin >> n;
-    vector<ll> v(n, 0);
+    int n, c;
+    cin >> n >> c;
+
+    vi nums(n, 0);
+
     FOR(i, 0, n) {
-        cin >> v[i];
-        largest = max(largest, v[i]);
-    }
-    if (largest <= 0) {
-        cout << largest << endl;
-        return;
+        cin >> nums[i];
     }
 
-    ll ans = largest, sum = 0;
-    FORS(i, 0, n, 2)
-        if (v[i] >= 0)
-            sum += v[i];
-    
-    ans = max(ans, sum), sum = 0;
-    FORS(i, 1, n, 2)
-        if (v[i] >= 0)
-            sum += v[i];
+    ll mn = LLONG_MAX;
+    vi tmp = nums;
+    while(next_permutation(tmp.begin(), tmp.end())) {
+        ll sum = 0;
+        FOR(i, 0, n-1) {
+            sum += abs(tmp[i+1] - tmp[i] - c);
+        }
 
+        mn = min(mn, (ll)sum);
+    }
     
-    cout << max(ans, sum) << '\n';
+    // cout << mx << endl;
+    tmp = nums;
+    ll sum = 0;
+
+    while(sum != mn) {
+        FOR(i, 0, n-1) {
+            sum += abs(tmp[i] - tmp[i + 1] - c);
+        }
+
+        if(sum == mn) {
+            printStruct(tmp);
+            return;
+        }
+    }
+
     return;
 }
 
