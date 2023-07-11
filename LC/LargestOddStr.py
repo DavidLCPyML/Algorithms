@@ -10,4 +10,4 @@ print("")
 print(num[:next((i for i in range(len(num) - 1, -1, -1) if int(num[i]) % 2 == 1), -1) + 1])
 
 # 1 liner
-num.rstrip("02468")
+print(num.rstrip("02468"))
