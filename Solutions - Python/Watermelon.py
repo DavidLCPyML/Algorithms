@@ -1,0 +1,1 @@
+print("NO" if ((n := int(input())) % 2 or n == 2) else "YES")

@@ -1,0 +1,1 @@
+print(*[''.join([word[0], str(len(word) - 2), word[-1]]) if len(word := input().strip()) > 10 else word for _ in range(int(input()))], sep = '\n')
