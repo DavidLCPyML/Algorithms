@@ -1,4 +1,4 @@
-stk = list(map(int, input().split()))
+asteroids = list(map(int, input().split()))
 
 stk = []
 for i in asteroids:
